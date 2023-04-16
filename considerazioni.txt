@@ -1,0 +1,9 @@
+Identificazione di un PMSM con modello MIMO
+
+Tipologie di identificazioni applicabili:
+1. [X] dominio del tempo
+2. dominio della frequenza
+3. [X] spazio di variabili di stato
+
+Possibili pre-processing:
+- Signal Scaling, tipico dei sistemi MIMO per normalizzare i dati
