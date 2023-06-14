@@ -21,7 +21,13 @@ end
 
 for d = 1:length(datasets)
     disp("Now working on: " + datasets(d) + "(n°"+num2str(d)+")");
-    [t_min_id, v_min_id] = model_identification(datasets, d, Ts, idx);
+    [t_min_id, v_min_id, fit] = model_identification(datasets, d, Ts, idx);
     valid_min_id(d) = v_min_id;
     train_min_id(d) = t_min_id;
+
+    vel_fit(:,d)= [fit(1); fit(3)];
+    torque_fit(:,d)= [fit(2); fit(4)];
 end
+
+close all
+fit_plot(length(datasets), vel_fit, torque_fit);
