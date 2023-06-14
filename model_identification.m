@@ -1,4 +1,4 @@
-function [t_min_id,v_min_id] = model_identification(datasets, dIndex, Ts, idx)
+function [t_min_id,v_min_id, fit] = model_identification(datasets, dIndex, Ts, idx)
 
 % Creo una cartella per conservare le immagini
 [ ~, ~ ] = mkdir("Figures/" + datasets(dIndex));
@@ -104,6 +104,9 @@ saveas(gcf, get_image_path(datasets(dIndex), "indice_ottimo.png"))
 %% Modello lineare e compare
 m = arx(train , [16*eye(2) 16*ones(2,3) zeros(2,3)]);
 m1 = arx(train , [20*eye(2) 20*ones(2,3) zeros(2,3)]);
+
+[~,fit_cell,~]=compare(validation, m, m1);
+fit = cell2mat(fit_cell);
 
 figure(3)
 compare(validation, m, m1)
