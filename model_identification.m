@@ -105,6 +105,13 @@ saveas(gcf, get_image_path(datasets(dIndex), "indice_ottimo.png"))
 m = arx(train , [16*eye(2) 16*ones(2,3) zeros(2,3)]);
 m1 = arx(train , [20*eye(2) 20*ones(2,3) zeros(2,3)]);
 
+% Other models to try
+% m =  armax(train , [16*eye(2) 16*ones(2,3) 1*ones(2,1) zeros(2,3)]);
+% m1 = armax(train , [26*eye(2) 26*ones(2,3) 1*ones(2,1) zeros(2,3)]);
+
+% m =  nlhw(train , [15*eye(2,3) 15*ones(2,3) zeros(2,3)]);
+% m1 = nlhw(train , [26*eye(2,3) 26*ones(2,3) zeros(2,3)]);
+
 [~,fit_cell,~]=compare(validation, m, m1);
 fit = cell2mat(fit_cell);
 
