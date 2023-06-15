@@ -34,6 +34,9 @@ FPE, AIC, MDL] = deal(zeros(1, ord_Max));
 
 for k = 1:ord_Max
     m2 = arx(train, [k*eye(2) k*ones(2,3) zeros(2,3)]); %modello arx ad ordine k su dati di train
+    %m2 = armax(train, [k*eye(2) k*ones(2,3) k*ones(2,1) zeros(2,3)]); %modello ARMAX ad ordine k su dati di train
+    %m2 = nlhw(train , [k*eye(2,3) k*ones(2,3) zeros(2,3)]); %modello HW ad ordine k su dati di train
+    
     %simulazione del modello 
     y_sim= sim(m2,u); 
     
